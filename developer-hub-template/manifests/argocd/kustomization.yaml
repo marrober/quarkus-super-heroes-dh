@@ -6,6 +6,8 @@ resources:
 - role-bindings/argocd-admin.yaml
 - rest-heroes/${{values.component_id}}-rest-heroes-argocd-app-dev-build.yaml
 - rest-heroes/${{values.component_id}}-rest-heroes-argocd-app-dev.yaml
-- rest-fights/${{values.component_id}}-rest-fights-argocd-app-dev.yaml
+#- rest-fights/${{values.component_id}}-rest-fights-argocd-app-dev-build.yaml
+#- rest-fights/${{values.component_id}}-rest-fights-argocd-app-dev.yaml
+- monitoring/${{values.component_id}}-monitoring-argocd-app-dev.yaml
 - rest-heroes/namespace-build.yaml
 - rest-heroes/namespace-dev.yaml
