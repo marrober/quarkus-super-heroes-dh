@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: superheroes-template
-  title: Superheroes microservices 0.103
+  title: Superheroes microservices 0.104
   description: Create the source content and git repos for the Superheroes application
   tags:
     - recommended
@@ -115,7 +115,7 @@ spec:
         copyWithoutTemplating:
           - .github/workflows/*
           - rest-heroes/src/main/resources/templates/UIResource/index.html
-          - rest-narration/src/main/resources/application.properties
+          - rest-narration/src/main/resources/*
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
