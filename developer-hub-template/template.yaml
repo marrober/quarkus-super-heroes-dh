@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: superheroes-template
-  title: Superheroes microservices 0.106
+  title: Superheroes microservices 0.107
   description: Create the source content and git repos for the Superheroes application
   tags:
     - recommended
@@ -49,31 +49,31 @@ spec:
             - Remote  
       dependencies:
         postgresql_database_location:
-        oneOf:
-          - properties:
-              postgresql_database_location:
-                enum:
-                  - Local
-              postgresql_database_url:
-                title: Database Location on OpenShift
-                type: string
-                description: Local database location
-                default: postgresql://heroes-db:5432
-              postresql_database_name:
-                title: Database name
-                type: string
-                description: The name of the local database
-                default: heroes_database
-          - properties:
-              postgresql_database_location:
-                enum: 
-                  - Remote
-              postgresql_database_url:
-                title: Database remote URL
-                type: string
-                description: Remote database URL (VM Location)
-                default: postgresql://heroes-db.superheroes.svc.cluster.local:5432
-              postresql_database_name:
+          oneOf:
+            - properties:
+                postgresql_database_location:
+                  enum:
+                    - Local
+                postgresql_database_url:
+                  title: Database Location on OpenShift
+                  type: string
+                  description: Local database location
+                  default: postgresql://heroes-db:5432
+                postresql_database_name:
+                  title: Database name
+                  type: string
+                  description: The name of the local database
+                  default: heroes_database
+            - properties:
+                postgresql_database_location:
+                  enum: 
+                    - Remote
+                postgresql_database_url:
+                  title: Database remote URL
+                  type: string
+                  description: Remote database URL (VM Location)
+                  default: postgresql://heroes-db.superheroes.svc.cluster.local:5432
+                postresql_database_name:
                 title: Database name
                 type: string
                 description: The name of the remote database
