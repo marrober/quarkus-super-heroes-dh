@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: superheroes-template
-  title: Superheroes microservices 0.108
+  title: Superheroes microservices 0.109
   description: Create the source content and git repos for the Superheroes application
   tags:
     - recommended
@@ -37,16 +37,16 @@ spec:
           type: string
           description: Help others understand what this website is for.
           default: A cool quarkus app
-    - title: Superheroes database location-2
-      required: 
+    - title: Superheroes database location
+      required:
         - postgresql_database_location
       properties:
         postgresql_database_location:
-          title: Database Location
+          title: Database location
           type: string
           enum:
             - Local
-            - Remote  
+            - Remote
       dependencies:
         postgresql_database_location:
           oneOf:
@@ -54,47 +54,6 @@ spec:
                 postgresql_database_location:
                   enum:
                     - Local
-                postgresql_database_url:
-                  title: Database Location on OpenShift
-                  type: string
-                  description: Local database location
-                  default: postgresql://heroes-db:5432
-                postresql_database_name:
-                  title: Database name
-                  type: string
-                  description: The name of the local database
-                  default: heroes_database
-            - properties:
-                postgresql_database_location:
-                  enum: 
-                    - Remote
-                postgresql_database_url:
-                  title: Database remote URL
-                  type: string
-                  description: Remote database URL (VM Location)
-                  default: postgresql://heroes-db.superheroes.svc.cluster.local:5432
-                postresql_database_name:
-                title: Database name
-                type: string
-                description: The name of the remote database
-                default: heroes_database
-    - title: Superheroes database location
-      required:
-        - image_registry
-      properties:
-        image_registry:
-          title: Image Registry
-          type: string
-          enum:
-            - Openshift
-            - Quay
-      dependencies:
-        image_registry:
-          oneOf:
-            - properties:
-                image_registry:
-                  enum:
-                    - Openshift
                 image_host:
                   title: Image Host
                   type: string
@@ -106,9 +65,9 @@ spec:
                   type: string
                   description: Build Image tag
             - properties:
-                image_registry:
+                postgresql_database_location:
                   enum:
-                    - Quay
+                    - Remote
                 image_host:
                   title: Image Host
                   type: string
