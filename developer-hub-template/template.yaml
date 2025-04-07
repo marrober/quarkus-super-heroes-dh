@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: superheroes-template
-  title: Superheroes microservices 0.109
+  title: Superheroes microservices 0.110
   description: Create the source content and git repos for the Superheroes application
   tags:
     - recommended
@@ -54,35 +54,30 @@ spec:
                 postgresql_database_location:
                   enum:
                     - Local
-                image_host:
-                  title: Image Host
+                postgresql_database_url:
+                  title: Database Location on OpenShift
                   type: string
-                  description: Host for storing image
-                  default: image-registry.openshift-image-registry.svc:5000
-                image_tag:
-                  title: Image Tag
-                  default: latest
+                  description: Local database location
+                  default: postgresql://heroes-db:5432
+                postresql_database_name:
+                  title: Database name
                   type: string
-                  description: Build Image tag
+                  description: The name of the local database
+                  default: heroes_database
             - properties:
                 postgresql_database_location:
                   enum:
                     - Remote
-                image_host:
-                  title: Image Host
+                postgresql_database_url:
+                  title: Database remote URL
                   type: string
-                  description: Host for storing image
-                  default: quay-2lnms.apps.cluster-2lnms.2lnms.sandbox1697.opentlc.com
-                image_organization:
-                  title: Organization
+                  description: Remote database URL (VM Location)
+                  default: postgresql://heroes-db.superheroes.svc.cluster.local:5432
+                postresql_database_name:
+                  title: Database name
                   type: string
-                  description: Name of the Quay Organization
-                  default: quayadmin
-                image_tag:
-                  title: Image Tag
-                  default: latest
-                  type: string
-                  description: Build Image tag
+                  description: The name of the remote database
+                  default: heroes_database
     - title: Image Registry Information
       required:
         - image_registry
