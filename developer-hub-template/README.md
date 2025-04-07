@@ -11,7 +11,7 @@ Since the template is running in a new cluster it is necessary to update the URL
 Update : 
 * quay url
 * gitlab urls (two)
-* cluster url (in a step, so this is easy to miss)
+* cluster url (in the two 'fetch:template' steps)
 
 ### Add Template to Developer Hub
 
