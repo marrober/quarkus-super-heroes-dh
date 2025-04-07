@@ -9,9 +9,9 @@ This repository contains the Backstage Template used to create the Kubernetes re
 Since the template is running in a new cluster it is necessary to update the URLs. 
 
 Update : 
-* quay url
-* gitlab urls (two)
-* cluster url (in the two 'fetch:template' steps)
+- quay url
+- gitlab urls (two)
+- cluster url (in the two 'fetch:template' steps)
 
 ### Add Template to Developer Hub
 
@@ -41,6 +41,25 @@ Find the GitHub URL for the template that you wish to add. If it is taken from t
 https://github.com/marrober/quarkus-super-heroes-dh/blob/main/developer-hub-template/template.yaml
 
 If you wait a few minutes then the template wil be visible in Developer Hub from the 'Create' menu. This then allows you to launch the template.
+
+
+## Additional GitOps Instance
+
+Create a new ArgoCD instance in the openshift-gitops namespace. To do this follow the steps below :
+
+- Select the openshift-gitops namespace in the OpenShift web UI
+- Select Installed Operators from the left hand side admininstrator menu
+- Select the Red Hat OpenShift GitOps operator
+Select the ArgoCD sub menu
+- Press the blue button marked "Create ArgoCD"
+- Give the new instance the name 'main-gitops' and press 'Create'
+
+Wait a minute or so for the new instance to spin up. 
+
+- Select the new instance and then select the 'resources' sub menu.
+- Find the 'main-gitops-server' route and open the URL to access the ArgoCD web UI.
+- The username will be 'admin' and the password will be the same as the existing ArgoCD instances which is located in a secret called 'argocd-cluster'.
+
 
 
 
