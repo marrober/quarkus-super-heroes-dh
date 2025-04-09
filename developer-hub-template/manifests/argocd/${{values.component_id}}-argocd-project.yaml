@@ -14,29 +14,23 @@ spec:
   sourceRepos:
   - '*'
 
+  sourceNamespaces:
+  - '*'
+
   # Limit the namespaces to which the project can deploy
   destinations:
   - server: https://kubernetes.default.svc
     namespace: '*'
-#  - server: https://api.celeron.demolab.local:6443
-#    namespace: '*'
 
   # Deny all cluster-scoped resources from being created, except for named items
   clusterResourceWhitelist:
-  - group: ${{ values.project_name }}-dev
-    kind: Namespace
-  - group: ${{ values.project_name }}-build
-    kind: Namespace
-  - group: 'rbac.authorization.k8s.io'
-    kind: ClusterRole
-  - group: 'rbac.authorization.k8s.io'
-    kind: ClusterRoleBinding
-
-  # Allow all namespaced-scoped resources to be created except named items
-  namespaceResourceBlacklist:
+  - group: "*"
+    kind: "*"
 
   # Deny all namespaced-scoped resources from being created, except for named items
   namespaceResourceWhitelist:
+  - group: "*"
+    kind: "*"
 
   # Enables namespace orphaned resource monitoring.
   orphanedResources:
@@ -47,3 +41,4 @@ spec:
 
   # A role which provides sync privileges to only the guestbook-dev application, e.g. to provide
   # sync privileges to a CI system
+  

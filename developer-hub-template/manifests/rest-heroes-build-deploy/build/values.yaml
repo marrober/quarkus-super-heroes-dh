@@ -17,5 +17,5 @@ image:
   registry: ${{values.image_registry}}
   organization: ${{values.image_organization}}
   host: ${{ values.image_host }}
-  name: ${{ values.image_name }}
+  name: ${{ values.image_name }}-rest-heroes
   tag: ${{ values.image_tag }}

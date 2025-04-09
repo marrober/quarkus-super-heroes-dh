@@ -45,6 +45,8 @@ If you wait a few minutes then the template wil be visible in Developer Hub from
 
 ## Additional GitOps Instance
 
+### ArgoCD configuration
+
 Create a new ArgoCD instance in the openshift-gitops namespace. To do this follow the steps below :
 
 - Select the openshift-gitops namespace in the OpenShift web UI
@@ -60,6 +62,33 @@ Wait a minute or so for the new instance to spin up.
 - Find the 'main-gitops-server' route and open the URL to access the ArgoCD web UI.
 - The username will be 'admin' and the password will be the same as the existing ArgoCD instances which is located in a secret called 'argocd-cluster'.
 
+### DeveloperHub configuration
 
+Update the DeveloperHub instance information for the new ArgoCD instance.
 
+- In the gitlab instance open the repository : gitops/janus-idp-gitops
+- Move to the directory : charts/backstage
+- Open the file backstage-rhtap-values.yaml
+- Edit the file in the GitLab repository and move down to line 315 to the argocd configuration information.
+- Copy the four lines of the instance defintion and paste below the exiting entry.
+- On the new instance block change the name to 'main-gitops' and change the URL to the appropriate URL for the new instance. Ensure the password remains as in the prior block.
 
+Restart the DeveloperHub instance for the change to take effect by deleting the running DeveloperHub pod (for example backstage-developer-hub-nnnxxxhhh-fffgg)
+
+Add a role binding to grant permission to the service account in the new ArgoCD instance to the backstage implementation :
+
+````
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: main-gitops-backstage
+  namespace: backstage
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+- kind: ServiceAccount
+  name: main-gitops-argocd-application-controller
+  namespace: openshift-gitops
+````

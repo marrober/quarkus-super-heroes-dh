@@ -135,7 +135,7 @@ spec:
                 name: rest-heroes-config-creds
             - configMapRef:
                 name: rest-heroes-config
-          image: ${{ values.image_host }}/${{ values.image_organization }}/${{ values.component_id }}:latest
+          image: ${{ values.image_host }}/${{ values.image_organization }}/${{ values.component_id }}-rest-heroes:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3

@@ -1,7 +1,6 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  creationTimestamp: null
   name: argocd-admin-dev
   namespace: ${{ values.component_id }}-dev
 roleRef:
@@ -16,7 +15,6 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  creationTimestamp: null
   name: argocd-admin-build
   namespace: ${{ values.component_id }}-build
 roleRef:
@@ -31,7 +29,6 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  creationTimestamp: null
   name: pipeline-refresh-app
   namespace: ${{ values.component_id }}-dev
 roleRef:
@@ -42,3 +39,6 @@ subjects:
 - kind: ServiceAccount
   name: pipeline
   namespace: ${{ values.component_id }}-build
+
+
+  
