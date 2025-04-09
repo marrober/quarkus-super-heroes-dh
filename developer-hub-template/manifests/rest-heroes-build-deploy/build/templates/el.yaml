@@ -8,7 +8,7 @@ spec:
   triggers:
     - bindings:
         - kind: TriggerBinding
-          ref: commit-binding
+          ref: commit-binding-rest-heroes
       interceptors:
         - params:
             - name: filter
@@ -18,12 +18,12 @@ spec:
           ref:
             kind: ClusterInterceptor
             name: cel
-      name: commit-trig
+      name: commit-trig-rest-heroes
       template:
         ref: {{ .Values.app.name }}-rest-heroes-run-build
     - bindings:
         - kind: TriggerBinding
-          ref: tag-binding-preprod
+          ref: tag-binding-rest-heroes-preprod
       interceptors:
         - params:
             - name: filter
@@ -35,12 +35,12 @@ spec:
           ref:
             kind: ClusterInterceptor
             name: cel
-      name: tag-trig-preprod
+      name: tag-binding-rest-heroes-preprod
       template:
         ref: {{ .Values.app.name }}--rest-heroes-run-promote
     - bindings:
         - kind: TriggerBinding
-          ref: tag-binding-prod
+          ref: tag-binding-rest-heroes-prod
       interceptors:
         - params:
             - name: filter
@@ -48,6 +48,6 @@ spec:
           ref:
             kind: ClusterInterceptor
             name: cel
-      name: tag-trig-prod
+      name: tag-binding-rest-heroes-prod
       template:
-        ref: {{ .Values.app.name }}-run-promote
+        ref: {{ .Values.app.name }}-rest-heroes-run-promote
