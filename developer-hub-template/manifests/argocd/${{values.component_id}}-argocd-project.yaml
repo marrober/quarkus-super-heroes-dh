@@ -35,10 +35,3 @@ spec:
   # Enables namespace orphaned resource monitoring.
   orphanedResources:
     warn: false
-
-  roles:
-  # A role which provides read-only access to all applications in the project
-
-  # A role which provides sync privileges to only the guestbook-dev application, e.g. to provide
-  # sync privileges to a CI system
-  
